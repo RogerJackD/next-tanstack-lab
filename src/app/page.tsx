@@ -1,5 +1,7 @@
 'use client'
+import { Button } from "@/components/ui/button";
 import { useProducts } from "@/hooks/use-users";
+import { useCounterStore } from "@/stores/counterStore";
 // import { ProductService } from "@/services/product.service";
 // import { Product } from "@/types/product";
 // import { useEffect, useState } from "react";
@@ -19,6 +21,8 @@ export default function Home() {
 
   const {data: products = [], isLoading } = useProducts();
 
+  const { count, increment, decrement, reset} = useCounterStore();
+
   if( isLoading ) return <div>Cargamdo...</div>;
 
   return (
@@ -31,6 +35,22 @@ export default function Home() {
           ))
         }
       </div>
+
+        <br />
+        <br />
+
+      <div>
+        {count}
+      </div>
+
+      <Button onClick={increment}>
+        +1
+      </Button>
+      <Button onClick={decrement}>
+        -1
+      </Button><Button onClick={reset}>
+        reset 
+      </Button>
     </div>
   );
 }
