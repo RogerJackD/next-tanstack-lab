@@ -73,17 +73,35 @@ export default function Home() {
           <TableBody>
             {
               products.map((product) => (
-                <TableRow key={product.id}>
-                  <TableCell className="font-mono text-xs">{product.id}</TableCell>
-                  <TableCell className="font-medium">{product.title}</TableCell>
-                  <TableCell className="max-w-md truncate text-muted-foreground">{product.description}</TableCell>
-                  <TableCell className="text-right tabular-nums">${product.price.toFixed(2)}</TableCell>
-                  <TableCell>
-                    <Image
-                      src={product.imageUrl}
-                      alt={product.title}
-                      className="h-12 w-12 rounded object-cover"
-                    />
+                <TableRow
+                  key={product.id}
+                  className="group hover:bg-muted/50 transition-colors duration-200"
+                >
+                  <TableCell className="font-mono text-xs text-muted-foreground py-4">
+                    #{product.id}
+                  </TableCell>
+                  <TableCell className="font-semibold text-sm py-4">
+                    {product.title}
+                  </TableCell>
+                  <TableCell className="max-w-md py-4">
+                    <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
+                      {product.description}
+                    </p>
+                  </TableCell>
+                  <TableCell className="text-right py-4">
+                    <span className="inline-flex items-center justify-center font-semibold text-sm tabular-nums">
+                      ${product.price.toFixed(2)}
+                    </span>
+                  </TableCell>
+                  <TableCell className="py-4">
+                    <div className="relative h-16 w-16 overflow-hidden rounded-lg border border-border/50 bg-muted/30 shadow-sm group-hover:shadow-md transition-shadow duration-200">
+                      <Image
+                        src={product.imageUrl}
+                        alt={product.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-200"
+                      />
+                    </div>
                   </TableCell>
                 </TableRow>
               ))
