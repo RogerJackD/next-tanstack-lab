@@ -11,9 +11,6 @@ export default function Home() {
 
   const {data: products = [], isLoading } = useProducts();
 
-  // ============================================
-  // 1️⃣ COUNTER STORE (básico)
-  // ============================================
   const { count, increment, decrement, reset} = useCounterStore();
 
   // ============================================
